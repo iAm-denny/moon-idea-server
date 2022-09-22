@@ -4,6 +4,40 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
 const RFToken = require('../models/rftoken.model');
 
+const generateToken = (user) => {
+  const accessToken = jwt.sign({
+    id: user.id,
+  }, process.env.API_SECRET, {
+    expiresIn: '15m',
+  });
+  const refreshToken = jwt.sign({
+    id: user.id,
+  }, process.env.REFRESH_TOKEN_SECRET, {
+    expiresIn: '1d',
+  });
+  const rftoken_id = v4();
+  return RFToken.findOneAndUpdate(
+    { user_id: user.id },
+    { rftoken_id, user_id: user.id, refresh_token: refreshToken },
+    { new: true, upsert: true },
+  )
+    .then(() => ({
+      user: {
+        id: user._id,
+        email: user.email,
+        fullName: user.fullname,
+        profile: user.profile,
+      },
+      rftoken_id,
+      accessToken,
+      message: 'Login successfully',
+      success: true,
+    })).catch((err) => ({
+      message: err,
+      success: false,
+    }));
+};
+
 exports.signup = (req, res) => {
   const user = new User({
     fullname: req.body.fullname,
@@ -11,16 +45,12 @@ exports.signup = (req, res) => {
     password: bcrypt.hashSync(req.body.password, 8),
   });
 
-  user.save((err) => {
+  user.save(async (err, data) => {
     if (err) {
-      return res.status(500).send({ message: err });
+      return res.status(302).send({ message: err });
     }
-
-    return res.status(200)
-      .send({
-        message: 'User Registered successfully',
-        success: true,
-      });
+    const responseData = await generateToken(data);
+    return res.status(200).send(responseData);
   });
 };
 
@@ -28,7 +58,7 @@ exports.signin = (req, res) => {
   User.findOne({
     email: req.body.email,
   })
-    .exec((err, user) => {
+    .exec(async (err, user) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
@@ -53,41 +83,8 @@ exports.signin = (req, res) => {
           });
         return;
       }
-      // signing token with user id
-      const accessToken = jwt.sign({
-        id: user.id,
-      }, process.env.API_SECRET, {
-        expiresIn: '15s',
-      });
-      const refreshToken = jwt.sign({
-        id: user.id,
-      }, process.env.REFRESH_TOKEN_SECRET, {
-        expiresIn: '1d',
-      });
-
-      const rftoken_id = v4();
-      RFToken.findOneAndUpdate(
-        { user_id: user.id },
-        { rftoken_id, user_id: user.id, refresh_token: refreshToken },
-        { new: true, upsert: true },
-        // eslint-disable-next-line consistent-return
-        (rferr) => {
-          if (rferr) return res.status(500).send({ message: rferr });
-          res.status(200)
-            .send({
-              user: {
-                id: user._id,
-                email: user.email,
-                fullName: user.fullName,
-                profile: user.profile,
-              },
-              rftoken_id,
-              accessToken,
-              message: 'Login successfully',
-              success: true,
-            });
-        },
-      );
+      const responseData = await generateToken(user);
+      res.status(200).send(responseData);
     });
 };
 
