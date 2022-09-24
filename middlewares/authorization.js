@@ -32,12 +32,12 @@ const verifyToken = (req, res, next) => {
                   message: error,
                 });
             }
-            if (data?.refresh_token) {
+            if (data && data?.refresh_token) {
               return jwt.verify(data.refresh_token, process.env.REFRESH_TOKEN_SECRET, (errS, decodeS) => {
                 if (!decodeS) {
                   return res.status(200)
                     .send({
-                      message: 'Session timeout.',
+                      message: 'Session timeout 1.',
                       success: false,
                     });
                 }
@@ -54,7 +54,7 @@ const verifyToken = (req, res, next) => {
                     if (errorS) {
                       return res.status(500)
                         .send({
-                          message: 'Session timeout.',
+                          message: 'Session timeout 2.',
                           success: false,
                         });
                     }
@@ -63,10 +63,10 @@ const verifyToken = (req, res, next) => {
                   });
               });
             }
-            res.json({ message: 'Session timeout', success: false });
+            res.json({ message: 'Session timeout 3', success: false });
           });
       } else {
-        res.json({ message: 'Session timeout', success: false });
+        res.json({ message: 'Session timeout 4', success: false });
       }
     });
   } else {

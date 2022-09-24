@@ -14,7 +14,7 @@ const refreshTokenSchema = new Schema({
     required: [true, 'refresh_token not provided.'],
   },
   user_id: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.SchemaTypes.ObjectId,
     ref: 'User',
   },
 });

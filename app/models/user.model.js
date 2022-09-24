@@ -28,6 +28,10 @@ const userSchema = new Schema({
   profile: {
     type: String,
   },
+  role: {
+    type: String,
+    default: 'client',
+  },
   created_at: {
     type: Date,
     default: Date.now,

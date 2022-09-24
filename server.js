@@ -6,6 +6,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const config = require('./config');
 const userRoutes = require('./app/routes/user');
+const clientRoutes = require('./app/routes/client');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(cookieParser());
 
 // route
 app.use('/user', userRoutes);
+app.use('/client', clientRoutes);
 
 connection
   .on('error', console.log)
