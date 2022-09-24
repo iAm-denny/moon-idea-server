@@ -25,6 +25,7 @@ const generateToken = (user) => {
       user: {
         id: user._id,
         email: user.email,
+        role: user.role,
         fullName: user.fullname,
         profile: user.profile,
       },
@@ -91,7 +92,9 @@ exports.signin = (req, res) => {
 exports.getinfo = (req, res) => {
   const { user, accessToken } = req;
   if (user) {
-    return res.json({ message: 'ok', user, accessToken });
+    return res.json({
+      message: 'ok', user, accessToken, success: true,
+    });
   }
   return res.json({ message: 'not ok' });
 };
