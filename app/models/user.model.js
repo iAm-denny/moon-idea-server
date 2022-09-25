@@ -28,6 +28,9 @@ const userSchema = new Schema({
   profile: {
     type: String,
   },
+  profile_public_id: {
+    type: String,
+  },
   role: {
     type: String,
     default: 'client',
