@@ -4,7 +4,7 @@ const User = require('../app/models/user.model');
 const RFToken = require('../app/models/rftoken.model');
 
 const verifyToken = (req, res, next) => {
-  if (req.headers) {
+  if (req.headers && req.headers.authorization) {
     jwt.verify(req.headers.authorization.split(' ')[1], process.env.API_SECRET, (err, decode) => {
       if (err) req.user = undefined;
       if (decode && decode.id) {

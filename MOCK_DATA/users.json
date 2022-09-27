@@ -1,0 +1,31 @@
+[{
+  "_id": {
+    "$oid": "632c9e2d11d1109e770f8b95"
+  },
+  "fullname": "Denny",
+  "email": "tester@gmail.com",
+  "password": "$2b$08$l5imzyDkojwhy5j1hxljz.LgOCWirk9aasBg0czg4pMnLVGw0KIaO",
+  "role": "client",
+  "created_at": {
+    "$date": {
+      "$numberLong": "1663868461843"
+    }
+  },
+  "__v": 0,
+  "profile": "https://res.cloudinary.com/dypkefkpl/image/upload/v1664084991/moon_dev/dff91x9nw9vyuy0a3zzu.png",
+  "profile_public_id": "moon_dev/dff91x9nw9vyuy0a3zzu"
+},{
+  "_id": {
+    "$oid": "632e5f41a545521be627c5c0"
+  },
+  "fullname": "Ninja",
+  "email": "tester2@gmail.com",
+  "password": "$2b$08$hrlfum6wBEEd45Cz/Zs7neICRPwcPnaw2TXGHVweMZJtjmBHlBOay",
+  "role": "client",
+  "created_at": {
+    "$date": {
+      "$numberLong": "1663983425261"
+    }
+  },
+  "__v": 0
+}]

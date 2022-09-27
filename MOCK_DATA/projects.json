@@ -1,0 +1,190 @@
+[{
+  "_id": {
+    "$oid": "632e5dd3bdba1bfd3f874f41"
+  },
+  "created_by": {
+    "$oid": "632c9e2d11d1109e770f8b95"
+  },
+  "project_name": "Test",
+  "project_type": "workspace",
+  "participants": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1663983059911"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1663983059911"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632e60aba545521be627c5ca"
+  },
+  "created_by": {
+    "$oid": "632c9e2d11d1109e770f8b95"
+  },
+  "project_name": "Pro",
+  "project_type": "personal",
+  "participants": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1663983787126"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1663983787127"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632e66b4a545521be627c658"
+  },
+  "created_by": {
+    "$oid": "632c9e2d11d1109e770f8b95"
+  },
+  "project_name": "Weee",
+  "project_type": "other",
+  "participants": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1663985332565"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1663985332565"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632e66d5a545521be627c663"
+  },
+  "created_by": {
+    "$oid": "632c9e2d11d1109e770f8b95"
+  },
+  "project_name": "nc",
+  "project_type": "personal",
+  "participants": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1663985365929"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1663985365929"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632e66eda545521be627c666"
+  },
+  "created_by": {
+    "$oid": "632c9e2d11d1109e770f8b95"
+  },
+  "project_name": "nc",
+  "project_type": "personal",
+  "participants": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1663985389457"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1663985389457"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632e66f3a545521be627c673"
+  },
+  "created_by": {
+    "$oid": "632c9e2d11d1109e770f8b95"
+  },
+  "project_name": "g",
+  "project_type": "workspace",
+  "participants": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1663985395867"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1663985395867"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632e6777bbec7aac6f177e9f"
+  },
+  "created_by": {
+    "$oid": "632c9e2d11d1109e770f8b95"
+  },
+  "project_name": "okay",
+  "project_type": "other",
+  "participants": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1663985527965"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1663985527965"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632e6792bbec7aac6f177eae"
+  },
+  "created_by": {
+    "$oid": "632e5f41a545521be627c5c0"
+  },
+  "project_name": "Design Portfolio",
+  "project_type": "personal",
+  "participants": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1663985554301"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1663985554302"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632e6ababbec7aac6f177ed6"
+  },
+  "created_by": {
+    "$oid": "632e5f41a545521be627c5c0"
+  },
+  "project_name": "Presentation",
+  "project_type": "other",
+  "participants": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1663986362872"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1663986362872"
+    }
+  },
+  "__v": 0
+}]
