@@ -2,28 +2,19 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const projectSchema = new Schema({
+const questionSchema = new Schema({
   created_by: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
   },
-  project_name: {
+  title: {
     type: String,
-    required: [true, "project name not provided."],
+    required: [true, "Title not provided."],
   },
-  project_type: {
+  body: {
     type: String,
-    required: [true, "project_type not provided."],
+    required: [true, "Body not provided."],
   },
-  participants: [
-    {
-      role: String,
-      user_id: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: "User",
-      },
-    },
-  ],
   createdAt: {
     type: Date,
     immutable: true, // it will not let it change anymore
@@ -34,4 +25,4 @@ const projectSchema = new Schema({
     default: () => Date.now(),
   },
 });
-module.exports = mongoose.model("project", projectSchema);
+module.exports = mongoose.model("question", questionSchema);
