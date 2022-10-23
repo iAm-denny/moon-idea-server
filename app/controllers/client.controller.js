@@ -128,12 +128,15 @@ exports.createAnswer = async (req, res) => {
       if (err) {
         return res.status(302).send({ success: false, message: err });
       }
-      await Notification.create({
-        noti_type: "comment",
-        post_id,
-        sender_id: req.user.id,
-        receiver_id: post_owner_id,
-      });
+      if (post_owner_id !== req.user.id) {
+        await Notification.create({
+          noti_type: "comment",
+          post_id,
+          sender_id: req.user.id,
+          receiver_id: post_owner_id,
+        });
+      }
+
       return res.status(200).send({ message: "success", success: true, data });
     });
   } catch (err) {
@@ -154,6 +157,38 @@ exports.fetchAnswer = async (req, res) => {
         select: "id fullname profile",
       });
     return res.json({ message: "success", success: true, data });
+  } catch (err) {
+    return res.json({ message: "something went wrong", success: false });
+  }
+};
+
+exports.fetchNotification = async (req, res) => {
+  try {
+    const data = await Notification.find()
+      .sort({
+        createdAt: "descending",
+      })
+      .populate({
+        path: "sender_id",
+        model: "User",
+        select: "id fullname profile",
+      });
+    return res.json({ message: "success", success: true, data });
+  } catch (err) {
+    return res.json({ message: "something went wrong", success: false });
+  }
+};
+
+exports.readNotification = async (req, res) => {
+  try {
+    await Notification.updateMany(
+      {
+        receiver_id: req.user.id,
+        has_read: false,
+      },
+      { has_read: true }
+    );
+    return res.json({ message: "success", success: true });
   } catch (err) {
     return res.json({ message: "something went wrong", success: false });
   }

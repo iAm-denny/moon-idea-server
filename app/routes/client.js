@@ -9,6 +9,8 @@ const {
   fetchQuestion,
   createAnswer,
   fetchAnswer,
+  fetchNotification,
+  readNotification,
 } = require("../controllers/client.controller");
 
 const router = Router();
@@ -23,5 +25,8 @@ router.post("/create-question", verifyToken, createQuestion);
 router.get("/fetch-question", verifyToken, fetchQuestion);
 router.post("/create-answer", verifyToken, createAnswer);
 router.get("/fetch-answer", verifyToken, fetchAnswer);
+// notification
+router.get("/fetch-notification", verifyToken, fetchNotification);
+router.post("/read-notification", verifyToken, readNotification);
 
 module.exports = router;
