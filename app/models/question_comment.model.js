@@ -2,23 +2,18 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const shapeSchema = new Schema({
-  id: {
-    type: String,
-    index: true,
-    required: true,
-    auto: true,
-  },
-  data: {
-    type: mongoose.SchemaTypes.Mixed,
-  },
+const answerSchema = new Schema({
   created_by: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
   },
-  project_id: {
+  content: {
+    type: String,
+    required: [true, "Content not provided."],
+  },
+  post_id: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "Project",
+    ref: "Question",
   },
   createdAt: {
     type: Date,
@@ -30,4 +25,4 @@ const shapeSchema = new Schema({
     default: () => Date.now(),
   },
 });
-module.exports = mongoose.model("shapes", shapeSchema);
+module.exports = mongoose.model("answer", answerSchema);

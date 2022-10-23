@@ -2,23 +2,26 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const shapeSchema = new Schema({
-  id: {
-    type: String,
-    index: true,
-    required: true,
-    auto: true,
-  },
-  data: {
-    type: mongoose.SchemaTypes.Mixed,
-  },
-  created_by: {
+const notificationSchema = new Schema({
+  sender_id: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
   },
-  project_id: {
+  receiver_id: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "Project",
+    ref: "User",
+  },
+  post_id: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: "Question",
+  },
+  has_read: {
+    type: Boolean,
+    default: false,
+  },
+  noti_type: {
+    type: String,
+    required: [true, "Noti type not provided."],
   },
   createdAt: {
     type: Date,
@@ -30,4 +33,4 @@ const shapeSchema = new Schema({
     default: () => Date.now(),
   },
 });
-module.exports = mongoose.model("shapes", shapeSchema);
+module.exports = mongoose.model("notification", notificationSchema);
