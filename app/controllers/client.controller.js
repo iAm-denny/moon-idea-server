@@ -172,9 +172,15 @@ exports.fetchNotification = async (req, res) => {
         path: "sender_id",
         model: "User",
         select: "id fullname profile",
+      })
+      .populate({
+        path: "post_id",
+        model: "question",
+        select: "id title",
       });
     return res.json({ message: "success", success: true, data });
   } catch (err) {
+    console.log("err", err);
     return res.json({ message: "something went wrong", success: false });
   }
 };
