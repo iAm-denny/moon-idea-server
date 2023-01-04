@@ -60,7 +60,8 @@ exports.fetchProjectShape = async (req, res) => {
   const { project_id } = req.query;
   try {
     const data = await Shape.find({ project_id, created_by: req.user.id });
-    return res.json({ message: "success", success: true, data });
+    const project = await Project.findById(project_id);
+    return res.json({ message: "success", success: true, data, project });
   } catch (err) {
     return res.json({ message: "something went wrong", success: false });
   }
